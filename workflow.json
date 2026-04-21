@@ -1,0 +1,54 @@
+{
+  "name": "Morning Chaos Briefing",
+  "nodes": [
+    {
+      "parameters": {
+        "rule": {
+          "interval": [
+            {
+              "field": "cronExpression",
+              "expression": "0 6 * * *"
+            }
+          ]
+        }
+      },
+      "id": "a1b2c3d4-0001-0001-0001-000000000001",
+      "name": "Daily 6 AM",
+      "type": "n8n-nodes-base.scheduleTrigger",
+      "typeVersion": 1.1,
+      "position": [240, 300]
+    },
+    {
+      "parameters": {
+        "command": "python3 ~/morning-chaos-briefing/send_briefing.py"
+      },
+      "id": "a1b2c3d4-0002-0002-0002-000000000002",
+      "name": "Run Briefing Script",
+      "type": "n8n-nodes-base.executeCommand",
+      "typeVersion": 1,
+      "position": [500, 300],
+      "notes": "Requires: repo cloned to ~/morning-chaos-briefing/ and DISCORD_WEBHOOK set in N8N environment variables. Script fetches weather, builds message, posts to Discord webhook."
+    }
+  ],
+  "connections": {
+    "Daily 6 AM": {
+      "main": [
+        [
+          {
+            "node": "Run Briefing Script",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": false,
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "shanebrain"
+  }
+}
