@@ -1,0 +1,27 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+.env
+venv/
+.venv/
+
+# Secrets
+secrets.json
+config.local.json
+*.key
+*.pem
+
+# N8N
+n8n/workflow-live.json
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+*.log
+logs/
+
+# Discord
+webhook_url.txt
